@@ -7,15 +7,14 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000/cars?page=2&limit=15")
       .then((res) => res.json())
-      .then((data) => setCars(data.results))
+      .then((data) => setCars(data))
       .catch((err) => console.log(err));
   }, []);
   console.log(cars);
   return (
     <>
       <div className="container">
-        <Card></Card>
-        {cars.map((value, index) => {
+        {cars.results.map((value, index) => {
           <Card
             key={index}
             image={value.image}
